@@ -1,0 +1,100 @@
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <link rel=\"stylesheet\" href=\"index.css\">\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Rubik&display=swap\" rel=\"stylesheet\">\r\n    <title>Time</title>\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <p id=\"time\"><span id=\"dayTime\">Нет подключения к интернету</span></p>\r\n</div>\r\n<script src=\"index.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.html b/index.html
+--- a/index.html	(revision 24ff42c2b40e456bd6ff72bba5047e256d4b5521)
++++ b/index.html	(date 1651062086015)
+@@ -12,6 +12,6 @@
+ <div class="container">
+     <p id="time"><span id="dayTime">Нет подключения к интернету</span></p>
+ </div>
+-<script src="index.js"></script>
++    <script src="index.js"></script>
+ </body>
+ </html>
+\ No newline at end of file
+Index: index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const dayTime = document.getElementById('dayTime');\r\n\r\nlet date = new Date();\r\n\r\nlet minutes = date.getMinutes();\r\nlet hour = date.getHours();\r\nlet dayWeek = date.getDay();\r\n\r\nfunction updateDate() {\r\n    date = new Date();\r\n    // date get list\r\n    minutes = date.getMinutes();\r\n    hour = date.getHours();\r\n    dayWeek = date.getDay();\r\n}\r\nsetInterval(updateDate, 1000);\r\n\r\nlet dayWeekWord = '';\r\nif (dayWeek == 0) {\r\n    dayWeekWord = 'ВС '\r\n} else if (dayWeek == 1) {\r\n    dayWeekWord = 'ПН '\r\n} else if (dayWeek == 2) {\r\n    dayWeekWord = 'ВТ '\r\n} else if (dayWeek == 3) {\r\n    dayWeekWord = 'СР '\r\n} else if (dayWeek == 4) {\r\n    dayWeekWord = 'ЧТ '\r\n} else if (dayWeek == 5) {\r\n    dayWeekWord = 'ПТ '\r\n} else if (dayWeek == 6) {\r\n    dayWeekWord = 'CБ '\r\n}\r\nfunction updateDayTime() {\r\n    dayTime.textContent = dayWeekWord + hour + ':' + minutes;\r\n} setInterval(updateDayTime, 1000);\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.js b/index.js
+--- a/index.js	(revision 24ff42c2b40e456bd6ff72bba5047e256d4b5521)
++++ b/index.js	(date 1651062389692)
+@@ -32,6 +32,11 @@
+     dayWeekWord = 'CБ '
+ }
+ function updateDayTime() {
+-    dayTime.textContent = dayWeekWord + hour + ':' + minutes;
+-} setInterval(updateDayTime, 1000);
++    if (minutes < 10) {
++        dayTime.textContent = dayWeekWord + hour + ':' + '0' + minutes;
++    } else {
++        dayTime.textContent = dayWeekWord + hour + ':' + minutes;
++    }
++} updateDayTime();
++setInterval(updateDayTime, 1000);
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f556cb6c-1f71-43ba-9503-e9ae1361efdd\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/index.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/index.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/index.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"28HI0DYSdMH9HR1R1avKabUeSOK\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f556cb6c-1f71-43ba-9503-e9ae1361efdd\" name=\"Changes\" comment=\"\" />\r\n      <created>1650866858452</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650866858452</updated>\r\n      <workItem from=\"1650866859947\" duration=\"974000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 24ff42c2b40e456bd6ff72bba5047e256d4b5521)
++++ b/.idea/workspace.xml	(date 1651062389801)
+@@ -2,9 +2,9 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="f556cb6c-1f71-43ba-9503-e9ae1361efdd" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,16 +31,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -50,6 +50,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1650866858452</updated>
+       <workItem from="1650866859947" duration="974000" />
++      <workItem from="1651062077520" duration="310000" />
+     </task>
+     <servers />
+   </component>

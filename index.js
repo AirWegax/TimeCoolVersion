@@ -13,6 +13,7 @@ function updateDate() {
     hour = date.getHours();
     dayWeek = date.getDay();
 }
+updateDate();
 setInterval(updateDate, 1000);
 
 let dayWeekWord = '';

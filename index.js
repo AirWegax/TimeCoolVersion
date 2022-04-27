@@ -33,6 +33,11 @@ if (dayWeek == 0) {
     dayWeekWord = 'CБ '
 }
 function updateDayTime() {
-    dayTime.textContent = dayWeekWord + hour + ':' + minutes;
-} setInterval(updateDayTime, 1000);
+    if (minutes < 10) {
+        dayTime.textContent = dayWeekWord + hour + ':' + '0' + minutes;
+    } else {
+        dayTime.textContent = dayWeekWord + hour + ':' + minutes;
+    }
+} updateDayTime();
+setInterval(updateDayTime, 1000);
 
